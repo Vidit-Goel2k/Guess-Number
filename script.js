@@ -14,19 +14,34 @@ form.addEventListener("submit", (e) => {
         wrapper.innerText = `You Won!`
     }
     else{
+        // checking low or high
+        const lowOrHigh = document.querySelector(".lowOrHi")
+        if(guess < randomNumber){
+            lowOrHigh.innerText = `low`
+        }
+        else{
+            lowOrHigh.innerText = `high`
+        }
+        
+        // filling prev guesses
         const prevGuesses = document.querySelector(".prevGuesses")
         prevGuessArr.push(guess)
         prevGuesses.innerText = `${prevGuessArr}`
+        
 
-        const guessRemainingDiv = document.querySelector(".guessRemaining")
+        // setting remaining guesses allowed
+        const guessesRemainingDiv = document.querySelector(".guessRemaining")
 
-        const guessRemaining = parseInt(guessRemainingDiv.innerText)
+        const guessesRemaining = parseInt(guessesRemainingDiv.innerText)
 
-        if(guessRemaining === 1){
+        if(guessesRemaining === 1){
         wrapper.innerText = `You Lost!`
         }
 
-        guessRemainingDiv.innerText = `${guessRemaining-1}`
+        guessesRemainingDiv.innerText = `${guessesRemaining-1}`
+
+
+
 
     }
 
